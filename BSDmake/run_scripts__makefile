@@ -1,0 +1,17 @@
+EXT=py
+FILES!=echo *.${EXT}
+CMD=./
+
+all: test
+
+test: ${FILES}
+
+.for file in ${FILES}
+.if ${file:L} == "py"
+${file:R}: ${file}
+.endif
+.endfor
+  
+*.${EXT}::
+	${CMD}$@
+
